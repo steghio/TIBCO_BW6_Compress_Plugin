@@ -1,0 +1,1 @@
+This software uses the Apache Commons Compress jar version 1.8.1 without modifications
