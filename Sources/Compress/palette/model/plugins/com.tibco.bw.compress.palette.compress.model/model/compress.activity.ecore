@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="compress"
+    nsURI="http://ns.tibco.com/bw/palette/compress" nsPrefix="compress">
+  <eClassifiers xsi:type="ecore:EClass" name="Zip">
+    <eAnnotations source="dkactivityconfig">
+      <details key="activitytype" value="Synchronous"/>
+      <details key="schemaType" value="XSD Editor"/>
+      <details key="schemaFile" value="C:/bw6_workspace_test_pdk/Compress/palette/design/plugins/com.tibco.bw.compress.palette.compress.design/schema/ZipSchema.xsd"/>
+      <details key="inputelementname" value="ZipInput"/>
+      <details key="outputelementname" value="ZipOutput"/>
+      <details key="faultelementname" value="ZipFault"/>
+      <details key="helpdocuuid" value="0ef90eb7-6748-4fb2-bfc2-843662a21bd4"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Unzip">
+    <eAnnotations source="dkactivityconfig">
+      <details key="activitytype" value="Synchronous"/>
+      <details key="schemaType" value="XSD Editor"/>
+      <details key="schemaFile" value="C:/bw6_workspace_test_pdk/Compress/palette/design/plugins/com.tibco.bw.compress.palette.compress.design/schema/UnzipSchema.xsd"/>
+      <details key="inputelementname" value="UnzipInput"/>
+      <details key="outputelementname" value="UnzipOutput"/>
+      <details key="faultelementname" value="UnzipFault"/>
+      <details key="helpdocuuid" value="15bda2a5-9615-45c2-bf10-1fc94f53d0df"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

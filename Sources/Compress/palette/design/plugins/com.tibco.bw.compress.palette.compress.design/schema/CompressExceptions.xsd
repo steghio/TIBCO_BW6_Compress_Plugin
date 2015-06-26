@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.tibco.com/bw/plugins/compress/6.0/CompressPluginExceptions" elementFormDefault="unqualified" targetNamespace="http://schemas.tibco.com/bw/plugins/compress/6.0/CompressPluginExceptions">
+	<complexType name="BaseExceptionType">
+		<sequence>
+			<element name="msg" type="string"/>
+			<element minOccurs="0" name="msgCode" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="PluginExceptionType">
+		<complexContent>
+			<extension base="tns:BaseExceptionType">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CompressPluginException" type="tns:PluginExceptionType"/>
+</schema>

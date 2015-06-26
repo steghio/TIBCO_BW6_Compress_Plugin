@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en_US"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="task" name="DC.Type" /><meta content="Setting Up Log Levels" name="DC.Title" /><meta content="By default, the log level is Error . The plug-in allows you to change the log level to trace different messages." name="abstract" /><meta content="By default, the log level is Error . The plug-in allows you to change the log level to trace different messages." name="description" /><meta content="GUID-5B26E5F9-106A-4647-A569-8D6C8DACEC5B.html" name="DC.Relation" scheme="URI" /><meta content="XHTML" name="DC.Format" /><meta content="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96" name="DC.Identifier" /><meta content="en_US" name="DC.Language" />
+<title>Setting Up Log Levels</title>
+<link href="static/screen.css?1rqDwwrM" rel="stylesheet" /><link href="static/print.css?xKpAPhd3" media="print" rel="stylesheet" />
+
+<script src="static/head.js?qUF72lF0"></script>
+<!-- saved from url=(0014)about:internet -->
+
+<script src="/javascripts/implementations.js"></script>
+</head>
+<body id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96" data-approot=""><header><a href="index.html" id="logo-link"><img id="logo" src="static/logo.png">
+</a>
+</header>
+<section id="center"><article><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96"></a>
+
+<h1 class="topictitle1">Setting Up Log Levels</h1>
+<div><p>By default, the log level is 
+	 <span class="option">Error</span> . The plug-in allows you to change the log level to trace different messages. 
+  </p>
+ 
+	 <div class="section" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__CONTEXT_107CAD1296534DF0B292DB19E0555464"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__CONTEXT_107CAD1296534DF0B292DB19E0555464"></a> 
+		<div class="note" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__GUID-395D98C7-64DA-4F75-A69E-C268025B96AD"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__GUID-395D98C7-64DA-4F75-A69E-C268025B96AD"></a><span class="notetitle">Note:</span> If neither the plug-in log nor the BusinessWorks log is configured in the 
+		  <span class="filepath">logback.xml</span> file, the error logs of the plug-in will be displayed in the Console view by default. 
+		  <p>If the plug-in log is not configured but the BusinessWorks log is configured in the 
+			 <span class="filepath">logback.xml</span> file, the configuration for the BusinessWorks log is implemented by the plug-in. 
+		  </p>
+ 
+		</div>
+ 
+	 </div>
+ 
+	 <div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEPS_F224BFCB35234466A29EB1771A5463DC"></a><ol id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEPS_F224BFCB35234466A29EB1771A5463DC"><li class="stepexpand" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_C5D2EF7C356B4825B30F44427E3EBCEF"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_C5D2EF7C356B4825B30F44427E3EBCEF"></a> 
+		  <span>Navigate to the 
+			 <span class="filepath"><var class="varname">TIBCO_HOME</var>\bw\<var class="varname">version_number</var>\config\design\logback</span> directory and open the 
+			 <span class="filepath">logback.xml</span> file. 
+		  </span> 
+		</li>
+<li class="stepexpand" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_76A3C46400DE4C8A98A494C7AFDB953D"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_76A3C46400DE4C8A98A494C7AFDB953D"></a> 
+		  <span>Add the following node in the User loggers area to specify the log level for the plug-in. 
+		  </span> 
+		    
+			 <pre class="codeblock">&lt;logger name=&quot;com.tibco.bw.palette.compress.runtime&quot;&gt;
+   &lt;level value=&quot;DEBUG&quot;/&gt;
+&lt;/logger&gt;</pre>
+ 
+			 <p>The 
+				<samp class="codeph">level</samp> tag defines the log level and the value is 
+			 <span class="option">Error</span> or 
+			 <span class="option">Debug</span>. 
+			  
+			 </p>
+ 
+			 <div class="note" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__GUID-3F555804-5566-473B-BA99-8F41BADF813F"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__GUID-3F555804-5566-473B-BA99-8F41BADF813F"></a><span class="notetitle">Note:</span> When the 
+				<samp class="codeph">level</samp> is set to 
+				<span class="option">Debug</span>, the input and output for the plug-in activities are also displayed in the Console view. See 
+				<a href="GUID-DB874E79-2C91-4B55-B1C4-55BC0AE4804B.html#GUID-DB874E79-2C91-4B55-B1C4-55BC0AE4804B">Log Levels</a> for more details regarding each log level. 
+			 </div>
+ 
+		   
+		</li>
+<li class="stepexpand" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_659BDE98128C46E888351C13BACD8872"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_659BDE98128C46E888351C13BACD8872"></a><strong>Optional: </strong> 
+		  <span>Add the following node in the User loggers area to specify the log level for an activity. 
+		  </span> 
+		    
+			 <pre class="codeblock">&lt;logger name=&quot;com.tibco.bw.palette.compress.runtime.<var class="varname">ActivityName</var>Activity&quot;&gt;
+   &lt;level value=&quot;DEBUG&quot;/&gt;
+&lt;/logger&gt;</pre>
+ 
+		   
+		   For example, if you want to set the log level of the WriteFile activity to 
+			 <span class="option">Debug</span>, you need to add the following node: 
+			  
+			 <pre class="codeblock">&lt;logger name=&quot;com.tibco.bw.palette.compress.runtime.ZipActivity&quot;&gt;
+   &lt;level value=&quot;DEBUG&quot;/&gt;
+&lt;/logger&gt;</pre>
+ 
+		   
+		    
+			 <div class="note" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__GUID-F7E729E0-BCD1-4F70-8A18-1CFC65EC1DC7"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__GUID-F7E729E0-BCD1-4F70-8A18-1CFC65EC1DC7"></a><span class="notetitle">Note:</span> For the activities that do not configure with specific log levels, they still inherit log level configured for the plug-in or BusinessWorks. 
+			 </div>
+ 
+		   
+		</li>
+<li class="stepexpand" id="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_EA7E439680224BC4B1CF9EEDCC686B10"><a name="GUID-56842B67-56DE-46ED-8AB4-F14C35B2CA96__STEP_EA7E439680224BC4B1CF9EEDCC686B10"></a> 
+		  <span>Save the file. 
+		  </span> 
+		</li>
+</ol>
+ 
+  </div>
+</article>
+<nav id="topnav"><div id="breadcrumbs"></div>
+<div id="topbuttons"><a id="button-back" href="#" title="Previous topic"><span>Previous topic</span>
+</a>
+<a id="button-forward" href="#" title="Next topic"><span>Next topic</span>
+</a>
+</div>
+<div onclick="location.href='http://www.tibco.com';" style="cursor:pointer;" id="logo">    </div>
+</nav>
+</section>
+<div id="leftbar"><div class="tabs"><div class="currentli toc"><a class="current toc" href="#"><span>Contents</span>
+</a>
+</div>
+<div class="search"><a class="search" href="#"><span>Search Results</span>
+</a>
+</div>
+</div>
+<nav class="toc current"><div class="loader"><img src="static/loader.gif">
+</div>
+</nav>
+<nav class="index"></nav>
+<nav class="glossary"></nav>
+<nav class="search"><div class="results"><span>No search has been performed.</span>
+</div>
+</nav>
+</div>
+<form id="searchform"><input class="search" type="search" placeholder="Search">
+<input class="submit" type="submit" value="Go">
+</form>
+<script src="static/body.js?GBUq2gso"></script>
+</body>
+</html>

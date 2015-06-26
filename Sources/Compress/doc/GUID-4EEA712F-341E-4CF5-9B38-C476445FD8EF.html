@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en_US"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="task" name="DC.Type" /><meta content="Deploying Applications" name="DC.Title" /><meta content="After deploying applications, you can manage BusinessWorks applications by using TIBCO Enterprise Administrator." name="abstract" /><meta content="After deploying applications, you can manage BusinessWorks applications by using TIBCO Enterprise Administrator." name="description" /><meta content="GUID-92A3C7BB-EBC3-494E-9B12-629660F85522.html" name="DC.Relation" scheme="URI" /><meta content="GUID-2C7B2BBA-DD23-4A3B-9226-44E6243DD11B.html" name="DC.Relation" scheme="URI" /><meta content="XHTML" name="DC.Format" /><meta content="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF" name="DC.Identifier" /><meta content="en_US" name="DC.Language" />
+<title>Deploying Applications</title>
+<link href="static/screen.css?1rqDwwrM" rel="stylesheet" /><link href="static/print.css?xKpAPhd3" media="print" rel="stylesheet" />
+
+<script src="static/head.js?qUF72lF0"></script>
+<!-- saved from url=(0014)about:internet -->
+
+<script src="/javascripts/implementations.js"></script>
+</head>
+<body id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF" data-approot=""><header><a href="index.html" id="logo-link"><img id="logo" src="static/logo.png">
+</a>
+</header>
+<section id="center"><article><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF"></a>
+
+<h1 class="topictitle1">Deploying Applications</h1>
+<div><p>After deploying applications, you can manage BusinessWorks applications by using TIBCO Enterprise Administrator. 
+  </p>
+ 
+	 <div class="p" id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__PREREQ_D6FEF9BB93CA411F8A07A5304ECA5C47"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__PREREQ_D6FEF9BB93CA411F8A07A5304ECA5C47"></a><div class="tasklabel"><h2 class="sectiontitle tasklabel">Prerequisites</h2></div> 
+		<div class="p">The following tasks are required before deploying applications:
+		<a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__UL_F172361E76164EBBA7A3E3EA6FF67EA4"></a><ul id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__UL_F172361E76164EBBA7A3E3EA6FF67EA4"> 
+		  <li id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_DE79A1A746424D39A3ECE85899BF9177"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_DE79A1A746424D39A3ECE85899BF9177"></a> 
+			 <a href="GUID-56459914-9BF0-4A31-BC3E-1A994C84F3D4.html">Creating a Project</a>. 
+		  </li>
+ 
+		  <li id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_CCBAB6CFFABE4F2E8F3E381ED99DF619"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_CCBAB6CFFABE4F2E8F3E381ED99DF619"></a> 
+			 <a href="GUID-2C7B2BBA-DD23-4A3B-9226-44E6243DD11B.html#GUID-2C7B2BBA-DD23-4A3B-9226-44E6243DD11B">Generating an EAR File</a>. 
+		  </li>
+ 
+		</ul>
+ 
+		 
+		</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__CONTEXT_ECB4FC87633C49EAA197B04ACCA89D16"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__CONTEXT_ECB4FC87633C49EAA197B04ACCA89D16"></a> 
+		<div class="p">A typical workflow of deployment includes: 
+		<a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__OL_0DD44BC301184F04AD5A1BECE3DF54B2"></a><ol id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__OL_0DD44BC301184F04AD5A1BECE3DF54B2"> 
+		  <li id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_DD16912BB3514137ADB5B5864717D6C6"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_DD16912BB3514137ADB5B5864717D6C6"></a>Upload an EAR file. 
+		  </li>
+ 
+		  <li id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_7431ED2F19604FC4910F4C0531C55294"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_7431ED2F19604FC4910F4C0531C55294"></a>Deploy an application. 
+		  </li>
+ 
+		  <li id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_E26453FAEF82438D83B2C9E1398DFE9C"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_E26453FAEF82438D83B2C9E1398DFE9C"></a>Configure an application. 
+		  </li>
+ 
+		  <li id="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_56A9E6DB8FE7427A828D0AA6C88F6B8B"><a name="GUID-4EEA712F-341E-4CF5-9B38-C476445FD8EF__LI_56A9E6DB8FE7427A828D0AA6C88F6B8B"></a>Start an application. 
+		  </li>
+ 
+		</ol>
+ 
+		</div>
+ 
+		<p> You can deploy an application EAR file by using the command-line mode with the 
+		  <span class="uicontrol">bwadmin</span> utility. See 
+		  <cite>TIBCO ActiveMatrix BusinessWorks Administration</cite> for more details about how to deploy an application. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+</article>
+<nav id="topnav"><div id="breadcrumbs"></div>
+<div id="topbuttons"><a id="button-back" href="#" title="Previous topic"><span>Previous topic</span>
+</a>
+<a id="button-forward" href="#" title="Next topic"><span>Next topic</span>
+</a>
+</div>
+<div onclick="location.href='http://www.tibco.com';" style="cursor:pointer;" id="logo">    </div>
+</nav>
+</section>
+<div id="leftbar"><div class="tabs"><div class="currentli toc"><a class="current toc" href="#"><span>Contents</span>
+</a>
+</div>
+<div class="search"><a class="search" href="#"><span>Search Results</span>
+</a>
+</div>
+</div>
+<nav class="toc current"><div class="loader"><img src="static/loader.gif">
+</div>
+</nav>
+<nav class="index"></nav>
+<nav class="glossary"></nav>
+<nav class="search"><div class="results"><span>No search has been performed.</span>
+</div>
+</nav>
+</div>
+<form id="searchform"><input class="search" type="search" placeholder="Search">
+<input class="submit" type="submit" value="Go">
+</form>
+<script src="static/body.js?GBUq2gso"></script>
+</body>
+</html>

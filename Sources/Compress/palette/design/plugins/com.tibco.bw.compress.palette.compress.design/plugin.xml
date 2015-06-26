@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+ Overridable true
+ $Id$
+-->
+
+<plugin>
+
+   <extension
+         point="com.tibco.bw.design.Palette">
+      <paletteDrawer
+            expanded="false"
+            largeIcon="icons/obj32/compress_32x32.png"
+            name="%compress.palette.name"
+            paletteID="bw.compress"
+            priority="500"
+            productID="bw.compress.product"
+            smallIcon="icons/obj16/compress_16x16.png"
+            tooltip="%compress.palette.tooltip">
+      </paletteDrawer>
+   </extension>
+   
+   <extension
+         point="com.tibco.bw.design.ActivityType">
+      <activityType
+            activityTypeID="bw.compress.Zip"
+            name="%compress.activity.Zip.name"
+            type="Standard"
+            priority="100"
+            tooltip="%compress.activity.Zip.tooltip"
+            visible="true">
+         <palette
+               paletteID="bw.compress">
+         </palette>
+      </activityType>
+
+      <activityType
+            activityTypeID="bw.compress.Unzip"
+            name="%compress.activity.Unzip.name"
+            type="Standard"
+            priority="100"
+            tooltip="%compress.activity.Unzip.tooltip"
+            visible="true">
+         <palette
+               paletteID="bw.compress">
+         </palette>
+      </activityType>
+
+      
+   </extension>
+   
+     <extension
+         point="com.tibco.bw.design.ActivitySignature">
+      <signature
+            activityTypeID="bw.compress.Zip"
+            signatureClass="com.tibco.bw.compress.palette.compress.design.zip.ZipSignature">
+      </signature>
+      <signature
+            activityTypeID="bw.compress.Unzip"
+            signatureClass="com.tibco.bw.compress.palette.compress.design.unzip.UnzipSignature">
+      </signature>
+   </extension>
+   
+   <extension
+         point="com.tibco.bw.design.ActivityTypeConfigEMF">
+      <config
+            activityTypeID="bw.compress.Zip"
+            eClassName="Zip"
+            ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
+            instanceName="%compress.activity.default.Zip.name"
+            modelHelperClass="com.tibco.bw.compress.palette.compress.design.zip.ZipModelHelper">
+      </config>
+      <config
+            activityTypeID="bw.compress.Unzip"
+            eClassName="Unzip"
+            ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
+            instanceName="%compress.activity.default.Unzip.name"
+            modelHelperClass="com.tibco.bw.compress.palette.compress.design.unzip.UnzipModelHelper">
+      </config>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="com.tibco.bw.core.design.process.editor">
+      </propertySections>
+   </extension>
+   
+   <extension
+         point="com.tibco.bw.design.BWContextHelp">
+      <plugin
+            defaultURL="file://C:/bw6_workspace_test_pdk/Compress/doc/index.html"
+            id="bw.compress.product"
+            name="BusinessWorks Compress Plugin">
+      </plugin>
+   </extension>
+   
+</plugin>

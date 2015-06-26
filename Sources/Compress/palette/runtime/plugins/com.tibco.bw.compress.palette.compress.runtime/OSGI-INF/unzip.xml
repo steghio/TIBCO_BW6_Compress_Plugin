@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Overridable true -->
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" factory="com.tibco.bw.palette.compress.Unzip" name="bw.compress.Unzip">
+   <implementation class="com.tibco.bw.compress.palette.compress.runtime.UnzipSynchronousActivity"/>
+   <property name="activityTypeID" type="String" value="bw.compress.Unzip"/>
+   <property name="modelPackageClass" type="String" value="com.tibco.bw.compress.palette.compress.model.compress.CompressPackage"/>
+   <property name="runtimeClass" type="String" value="com.tibco.bw.compress.palette.compress.runtime.UnzipSynchronousActivity"/>
+</scr:component>

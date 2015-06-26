@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+ Overridable true
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://ns.tibco.com/bw/palette/compress"
+            class="com.tibco.bw.compress.palette.compress.model.compress.CompressPackage"/>
+   </extension>
+   <extension
+         point="com.tibco.bw.model.ActivityIcon">
+    <activityIcon
+            activityTypeID="bw.compress.Zip"
+            diagramIcon="icons/obj48/compress_zip_48x48.png"
+            largeIcon="icons/obj32/compress_zip_32x32.png"
+            smallIcon="icons/obj16/compress_zip_16x16.png">
+      </activityIcon>
+    <activityIcon
+            activityTypeID="bw.compress.Unzip"
+            diagramIcon="icons/obj48/compress_unzip_48x48.png"
+            largeIcon="icons/obj32/compress_unzip_32x32.png"
+            smallIcon="icons/obj16/compress_unzip_16x16.png">
+      </activityIcon>
+    </extension>
+</plugin>

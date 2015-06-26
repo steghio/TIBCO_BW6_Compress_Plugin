@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en_US"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="task" name="DC.Type" /><meta content="Debugging and Running a Process" name="DC.Title" /><meta content="Debug the application you have configured to ensure that the application configuration is correct." name="abstract" /><meta content="Debug the application you have configured to ensure that the application configuration is correct." name="description" /><meta content="GUID-92A3C7BB-EBC3-494E-9B12-629660F85522.html" name="DC.Relation" scheme="URI" /><meta content="GUID-01284EF2-44F7-4460-ACAC-9FA689724AC2.html" name="DC.Relation" scheme="URI" /><meta content="XHTML" name="DC.Format" /><meta content="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604" name="DC.Identifier" /><meta content="en_US" name="DC.Language" />
+<title>Debugging and Running a Process</title>
+<link href="static/screen.css?1rqDwwrM" rel="stylesheet" /><link href="static/print.css?xKpAPhd3" media="print" rel="stylesheet" />
+
+<script src="static/head.js?qUF72lF0"></script>
+<!-- saved from url=(0014)about:internet -->
+
+<script src="/javascripts/implementations.js"></script>
+</head>
+<body id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604" data-approot=""><header><a href="index.html" id="logo-link"><img id="logo" src="static/logo.png">
+</a>
+</header>
+<section id="center"><article><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604"></a>
+
+<h1 class="topictitle1">Debugging and Running a Process</h1>
+<div><p> Debug the application you have configured to ensure that the application configuration is correct. 
+  </p>
+ 
+	 <div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEPS_3E42ABCF4EE148C8A5E0ECF4D8D7FA28_unique_2"></a><ol id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEPS_3E42ABCF4EE148C8A5E0ECF4D8D7FA28_unique_2"><li class="stepexpand" id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_322A1C0168D64CFBA3E2E68D07FC3BC9"><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_322A1C0168D64CFBA3E2E68D07FC3BC9"></a> 
+		  <span>Open the process you have configured in TIBCO Business Studio. 
+		  </span> 
+		</li>
+<li class="stepexpand" id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_3B15CF332D10440D88D9B059B7871BD0_unique_1"><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_3B15CF332D10440D88D9B059B7871BD0_unique_1"></a> 
+		  <span> On the toolbar, click 
+			 <span class="menucascade"><span class="uicontrol">Run</span> &gt; <span class="uicontrol">Debug Configurations</span></span>. 
+		  </span> 
+		</li>
+<li class="stepexpand" id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_BC405CC495284D48B3F64265C6B391A1"><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_BC405CC495284D48B3F64265C6B391A1"></a> 
+		  <span>Click 
+			 <span class="menucascade"><span class="uicontrol">BusinessWorks Application</span> &gt; <span class="uicontrol">BWApplication</span></span> in the left panel. 
+		  </span> 
+		</li>
+<li class="stepexpand" id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_F0592ECBDEC144ED80E6C192334E3319"><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_F0592ECBDEC144ED80E6C192334E3319"></a> 
+		  <span>Ensure only the application you want to debug and run is selected in the 
+			 <span class="uicontrol">Applications</span> tab in the right panel. 
+		  </span> 
+		</li>
+<li class="stepexpand" id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_164532301DC540FEAB56E55B467B7C0D"><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_164532301DC540FEAB56E55B467B7C0D"></a>
+		  <span>Click the 
+			 <span class="uicontrol">Advanced</span> tab and click 
+			 <span class="uicontrol">Browse</span> to locate the 
+			 <span class="filepath">logback</span> file.
+		  </span>
+		   By default, the log file resides in the 
+			 <span class="filepath"><var class="varname">TIBCO_HOME</var>/bw/6.0/config/design/logback</span> directory and error logs are captured. See 
+			 <a href="GUID-5B26E5F9-106A-4647-A569-8D6C8DACEC5B.html#GUID-5B26E5F9-106A-4647-A569-8D6C8DACEC5B">Managing Logs</a> for more details.
+		  
+		</li>
+<li class="stepexpand" id="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_95042FFE7A9549229C002BB1A9D7C9DD"><a name="GUID-E9BA1EE2-F7AD-4C7E-835C-C13CED458604__STEP_95042FFE7A9549229C002BB1A9D7C9DD"></a> 
+		  <span>Click 
+			 <span class="uicontrol">Debug</span>. 
+		  </span> 
+		  <div class="stepresult">TIBCO Business Studio changes to the Debug perspective. Logs are displayed in the Console view. 
+		  </div> 
+		</li>
+</ol>
+ 
+  </div>
+</article>
+<nav id="topnav"><div id="breadcrumbs"></div>
+<div id="topbuttons"><a id="button-back" href="#" title="Previous topic"><span>Previous topic</span>
+</a>
+<a id="button-forward" href="#" title="Next topic"><span>Next topic</span>
+</a>
+</div>
+<div onclick="location.href='http://www.tibco.com';" style="cursor:pointer;" id="logo">    </div>
+</nav>
+</section>
+<div id="leftbar"><div class="tabs"><div class="currentli toc"><a class="current toc" href="#"><span>Contents</span>
+</a>
+</div>
+<div class="search"><a class="search" href="#"><span>Search Results</span>
+</a>
+</div>
+</div>
+<nav class="toc current"><div class="loader"><img src="static/loader.gif">
+</div>
+</nav>
+<nav class="index"></nav>
+<nav class="glossary"></nav>
+<nav class="search"><div class="results"><span>No search has been performed.</span>
+</div>
+</nav>
+</div>
+<form id="searchform"><input class="search" type="search" placeholder="Search">
+<input class="submit" type="submit" value="Go">
+</form>
+<script src="static/body.js?GBUq2gso"></script>
+</body>
+</html>

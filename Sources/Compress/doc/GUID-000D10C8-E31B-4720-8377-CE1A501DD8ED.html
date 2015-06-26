@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en_US"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="task" name="DC.Type" /><meta content="Exporting Logs to a File" name="DC.Title" /><meta content="Modify the logback.xml file to export plug-in logs to a file." name="abstract" /><meta content="Modify the logback.xml file to export plug-in logs to a file." name="description" /><meta content="GUID-5B26E5F9-106A-4647-A569-8D6C8DACEC5B.html" name="DC.Relation" scheme="URI" /><meta content="XHTML" name="DC.Format" /><meta content="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED" name="DC.Identifier" /><meta content="en_US" name="DC.Language" />
+<title>Exporting Logs to a File</title>
+<link href="static/screen.css?1rqDwwrM" rel="stylesheet" /><link href="static/print.css?xKpAPhd3" media="print" rel="stylesheet" />
+
+<script src="static/head.js?qUF72lF0"></script>
+<!-- saved from url=(0014)about:internet -->
+
+<script src="/javascripts/implementations.js"></script>
+</head>
+<body id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED" data-approot=""><header><a href="index.html" id="logo-link"><img id="logo" src="static/logo.png">
+</a>
+</header>
+<section id="center"><article><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED"></a>
+
+<h1 class="topictitle1">Exporting Logs to a File</h1>
+<div><p>Modify the 
+	 <span class="filepath">logback.xml</span> file to export plug-in logs to a file. 
+  </p>
+ 
+	 <div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEPS_F224BFCB35234466A29EB1771A5463DC_unique_1"></a><ol id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEPS_F224BFCB35234466A29EB1771A5463DC_unique_1"><li class="stepexpand" id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_C5D2EF7C356B4825B30F44427E3EBCEF_unique_1"><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_C5D2EF7C356B4825B30F44427E3EBCEF_unique_1"></a> 
+		  <span>Navigate to the 
+			 <span class="filepath"><var class="varname">TIBCO_HOME</var>\bw\<var class="varname">version_number</var>\config\design\logback</span> directory and open the 
+			 <span class="filepath">logback.xml</span> file. 
+		  </span> 
+		    
+			 <div class="note" id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__GUID-6E08745E-278B-4259-9B7E-23C4ABBBC613"><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__GUID-6E08745E-278B-4259-9B7E-23C4ABBBC613"></a><span class="notetitle">Note:</span> When deploying an application in TIBCO Enterprise Administrator, you need to navigated to the 
+				<span class="filepath"><var class="varname">TIBCO_HOME\</var>bw\domains\mydomain\appnodes\myspace\mynode</span> directory to find the 
+				<span class="filepath">logback.xml</span> file. 
+			 </div>
+ 
+		   
+		</li>
+<li class="stepexpand" id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_76A3C46400DE4C8A98A494C7AFDB953D_unique_1"><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_76A3C46400DE4C8A98A494C7AFDB953D_unique_1"></a> 
+		  <span>Add the following node to specify the file location. 
+		  </span> 
+		    
+			 <pre class="codeblock">&lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.FileAppender&quot;&gt;
+   &lt;file&gt;<span class="filepath"><var class="varname">c:/bw6-compress.log</var></span>&lt;/file&gt;
+      &lt;encoder&gt;
+        &lt;pattern&gt;%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}-%msg%n&lt;/pattern&gt;
+      &lt;/encoder&gt;
+&lt;/appender&gt;</pre>
+ 
+			 <div class="p">The 
+				<samp class="codeph">file</samp> tag defines the location to which the log is exported and the value is the absolute path of the file. 
+				<div class="note" id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__GUID-CF1CEFEC-EA0B-47CD-B453-A12FA75B72AF"><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__GUID-CF1CEFEC-EA0B-47CD-B453-A12FA75B72AF"></a><span class="notetitle">Note:</span> You also need to add the file name in the file path. 
+				</div>
+ 
+				 
+			 </div>
+ 
+		   
+		</li>
+<li class="stepexpand" id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_65221791480448E7A63AD9D301B11656"><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_65221791480448E7A63AD9D301B11656"></a> 
+		  <span>Add the following node to the 
+			 <samp class="codeph">root</samp> node at the bottom of the 
+			 <span class="filepath">logback.xml</span> file to enable exporting the logs to a file. 
+		  </span> 
+		    
+			 <pre class="codeblock">	&lt;appender-ref ref=&quot;FILE&quot; /&gt;</pre>
+ 
+		   
+		    
+			 <pre class="codeblock">&lt;root level=&quot;DEBUG&quot;&gt;
+   &lt;appender-ref ref=&quot;STDOUT&quot; /&gt;
+   &lt;appender-ref ref=&quot;FILE&quot; /&gt;
+&lt;/root&gt;</pre>
+ 
+		   
+		</li>
+<li class="stepexpand" id="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_EA7E439680224BC4B1CF9EEDCC686B10_unique_1"><a name="GUID-000D10C8-E31B-4720-8377-CE1A501DD8ED__STEP_EA7E439680224BC4B1CF9EEDCC686B10_unique_1"></a> 
+		  <span>Save the file. 
+		  </span> 
+		</li>
+</ol>
+ 
+  </div>
+</article>
+<nav id="topnav"><div id="breadcrumbs"></div>
+<div id="topbuttons"><a id="button-back" href="#" title="Previous topic"><span>Previous topic</span>
+</a>
+<a id="button-forward" href="#" title="Next topic"><span>Next topic</span>
+</a>
+</div>
+<div onclick="location.href='http://www.tibco.com';" style="cursor:pointer;" id="logo">    </div>
+</nav>
+</section>
+<div id="leftbar"><div class="tabs"><div class="currentli toc"><a class="current toc" href="#"><span>Contents</span>
+</a>
+</div>
+<div class="search"><a class="search" href="#"><span>Search Results</span>
+</a>
+</div>
+</div>
+<nav class="toc current"><div class="loader"><img src="static/loader.gif">
+</div>
+</nav>
+<nav class="index"></nav>
+<nav class="glossary"></nav>
+<nav class="search"><div class="results"><span>No search has been performed.</span>
+</div>
+</nav>
+</div>
+<form id="searchform"><input class="search" type="search" placeholder="Search">
+<input class="submit" type="submit" value="Go">
+</form>
+<script src="static/body.js?GBUq2gso"></script>
+</body>
+</html>

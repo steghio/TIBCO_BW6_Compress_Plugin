@@ -1,0 +1,21 @@
+#topbar,#leftbar,#leftbuttons,#collapse-toc,#breadcrumbs,.related-links,#searchform {
+    display: none;
+}
+article {
+    position: static;
+    overflow: visible;
+}
+#printall {
+    display: block;
+}
+#logo-link {
+    display: none;
+}
+article {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+#leftbar,header,#dragger {
+    display: none;
+}

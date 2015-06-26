@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Overridable true -->
+<feature
+      id="com.tibco.bw.compress.palette.compress.runtime.feature"
+      label="%featureName"
+      version="1.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="com.tibco.bw.api.model.feature" version="6.0.100" match="compatible"/>
+      <import feature="com.tibco.bw.api.runtime.feature" version="6.0.100" match="compatible"/>
+      <import feature="com.tibco.tpcl.org.genxdm.core.feature" version="1.1.0" match="compatible"/>
+      <import feature="com.tibco.tpcl.javax.mail.feature" version="1.4.700" match="compatible"/>
+      <import feature="com.tibco.bw.platformservices.feature" version="6.0.100" match="compatible"/>
+      <import feature="com.tibco.genxdm.extras.feature" version="1.1.0" match="compatible"/>
+      <import feature="com.tibco.genxdm.processor.xslt.feature" version="1.1.0" match="compatible"/>
+      <import feature="com.tibco.neo.common.util.feature" version="2.5.100" match="compatible"/>
+      <import feature="com.tibco.plugin.tibrv.client.feature" version="8.4.100" match="compatible"/>
+      <import feature="com.tibco.genxdm.bridge.xinode.feature" version="1.1.0" match="compatible"/>
+      <import feature="com.tibco.tibcoxml.xml" version="5.51.700" match="compatible"/>
+      <import feature="com.tibco.tibcoxml.util" version="5.51.700" match="compatible"/>
+      <import feature="com.tibco.tpcl.org.jvnet.annox.feature" version="0.4.100.001" match="compatible"/>
+      <import feature="com.tibco.tpcl.javax.xml.bind.feature" version="2.2.6" match="compatible"/>
+      <import feature="com.tibco.tpcl.org.apache.commons.pool.feature" version="1.6.0" match="compatible"/>
+      <import feature="com.tibco.tpcl.org.eclipse.bpel.feature.rt" version="1.4.300" match="compatible"/>
+      <import feature="com.tibco.bw.api.palette.shared.feature" version="6.0.100" match="compatible"/>
+      <import feature="com.tibco.bw.compress.palette.compress.model.feature" version="1.0.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="com.tibco.bw.compress.palette.compress.runtime"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+</feature>
