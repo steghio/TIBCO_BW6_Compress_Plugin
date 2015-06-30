@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.util.Enumeration;
 
 import com.tibco.bw.compress.palette.compress.runtime.RuntimeMessageBundle;
+import com.tibco.bw.compress.palette.compress.runtime.fault.UnzipFault;
 import com.tibco.bw.compress.palette.compress.model.compress.Unzip;
 import com.tibco.bw.runtime.ActivityFault;
 import com.tibco.bw.runtime.SyncActivity;
@@ -49,13 +50,15 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 	//return parameters
 	protected int lretCode = 0;
 	protected String lretMsg = "";
+	//log settings - INFO should be reserved for ENGINE logs
+	private boolean isDebugActive = false;
+	private boolean isWarnActive = false;
+	private boolean isErrorActive = false;
+	private boolean isTraceActive = false;
 
 	@Property
 	public Unzip activityConfig;
     /**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 * 
 	 * This method is called to initialize the activity. It is called by the 
@@ -67,15 +70,13 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 	@Override
 	public void init() throws ActivityLifecycleFault {
 		super.init();
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
+		isDebugActive = getActivityLogger().isDebugEnabled();
+		isWarnActive = getActivityLogger().isWarnEnabled();
+		isErrorActive = getActivityLogger().isErrorEnabled();
+		isTraceActive = getActivityLogger().isTraceEnabled();
 	}
 	
 	/**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 * 
 	 * This method is called when an activity is destroyed. It is called by the BusinessWorks Engine and 
@@ -84,15 +85,9 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
     @Override
 	public void destroy() {
 		super.destroy();
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
-	}
+    }
 	
     /**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *
      * The implementation of this method defines the execution behavior of the synchronous activity.  
@@ -133,34 +128,37 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
         	}
         	createDirs = getInputParameterBooleanValueByName(input, processContext.getXMLProcessingContext(), "createDirs");
         	overwrite = getInputParameterBooleanValueByName(input, processContext.getXMLProcessingContext(), "overwrite");
-        	System.out.println("UNZIP - [INFO] Started");
-            System.out.println("UNZIP - [DEBUG] Input: ziplocation = "+ziplocation+" - zipname = "+zipname+" - unziplocation = "+unziplocation+" -createDirs = "+createDirs+" - overwrite = "+overwrite);
+
+            if(isTraceActive){
+            	activityLogger.trace(RuntimeMessageBundle.TRACE_UNZIP_ACTIVITY_START, new Object[]{});
+            }
+            if(isDebugActive){
+            	activityLogger.debug(RuntimeMessageBundle.DEBUG_UNZIP_ACTIVITY_INPUT, new Object[]{ziplocation, zipname, unziplocation, createDirs, overwrite});
+            }
             try{
             //check if zipfile exists
             File lzipFile = new File(ziplocation+zipname);
             if(!lzipFile.exists()){
-            	System.out.println("UNZIP - [WARN] Zipfile does not exist "+lzipFile.getAbsolutePath());
-	    		lretCode = 1;
-	    		lretMsg = "UNZIP - [WARN] Zipfile does not exist "+lzipFile.getAbsolutePath();
-	    		// create output data according the output structure
-	            result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-	    		return result;
+            	if(isErrorActive){
+        			activityLogger.error(RuntimeMessageBundle.ERROR_FILE_NOT_FOUND, new Object[]{lzipFile.getAbsolutePath()});
+        		}
+        		throw new UnzipFault(activityContext, RuntimeMessageBundle.ERROR_FILE_NOT_FOUND.getErrorCode(), RuntimeMessageBundle.ERROR_FILE_NOT_FOUND, new Object[]{lzipFile.getAbsolutePath()});
             }
             //create zipfile object
         	zipFile = new ZipFile(ziplocation+zipname);
         	//check if unzip destination exists
         	File funzip = new File(unziplocation);
         	if(!funzip.exists() && createDirs){
-        		System.out.println("UNZIP - [DEBUG] Creating directory "+funzip.toString());
+        		if(isDebugActive){
+                	activityLogger.debug(RuntimeMessageBundle.DEBUG_CREATE_DIR, new Object[]{funzip.toString()});
+                }
         		funzip.mkdirs();
         	}
         	else if(!funzip.exists() && !createDirs){
-        		System.out.println("UNZIP - [WARN] Unzip location does not exist "+funzip.getAbsolutePath());
-	    		lretCode = 2;
-	    		lretMsg = "UNZIP - [WARN] Unzip location does not exist "+funzip.getAbsolutePath();
-	    		// create output data according the output structure
-	            result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-	    		return result;
+        		if(isWarnActive){
+        			activityLogger.warn(RuntimeMessageBundle.WARN_PATH_NOT_EXISTS, new Object[]{funzip.getAbsolutePath()});
+        		}
+	    		throw new UnzipFault(activityContext, RuntimeMessageBundle.WARN_PATH_NOT_EXISTS.getErrorCode(), RuntimeMessageBundle.WARN_PATH_NOT_EXISTS, new Object[]{funzip.getAbsolutePath()});
         	}
         	//unzip
         	//get zip file content references
@@ -169,21 +167,25 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
             	while (entries.hasMoreElements()) {
         		entry = entries.nextElement();
                 	entryDestination = new File(unziplocation,  entry.getName());
-                	System.out.println("UNZIP - [DEBUG] Extracting item "+entryDestination.getAbsolutePath());
+                	if(isDebugActive){
+                    	activityLogger.debug(RuntimeMessageBundle.DEBUG_EXTRACT_ITEM, new Object[]{entryDestination.getAbsolutePath()});
+                    }
                 	//check if we need to overwrite something
                 	/*this means we might add items to the existing directory and we'll stop without rollbacking if we encounter
                 	 *an existing item but the overwrite flag was not set to true
                 	 */
                 	if(entryDestination.exists() && !overwrite){
-                		System.out.println("UNZIP - [WARN] Unzip item already exists "+entryDestination.getAbsolutePath());
-        	    		lretCode = 3;
-        	    		lretMsg = "UNZIP - [WARN] Unzip item already exists "+entryDestination.getAbsolutePath();
+                		if(isWarnActive){
+                			activityLogger.warn(RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS, new Object[]{entryDestination.getAbsolutePath()});
+                		}
         	    		IOUtils.closeQuietly(in);
             			IOUtils.closeQuietly(out);
-        	    		break;
+                		throw new UnzipFault(activityContext, RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS.getErrorCode(), RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS, new Object[]{entryDestination.getAbsolutePath()});
                 	}
                 	else if(entryDestination.exists() && overwrite){
-                		System.out.println("UNZIP - [DEBUG] Overwriting existing item "+entryDestination.getAbsolutePath());
+                		if(isTraceActive){
+                        	activityLogger.debug(RuntimeMessageBundle.TRACE_OVERWRITE_ITEM, new Object[]{entryDestination.getAbsolutePath()});
+                        }
                 	}
                 	entryDestination.getParentFile().mkdirs();
                 	if (entry.isDirectory())
@@ -191,32 +193,37 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
                 	else {
                     		in = zipFile.getInputStream(entry);
                     		out = new FileOutputStream(entryDestination);
-        			try{
-                    			IOUtils.copy(in, out);
-        			}
-        			catch(Exception e){
-        				System.out.println("UNZIP - [ERROR] Exception when extracting "+entry.getName()+" to "+entryDestination.getAbsolutePath()+" - "+e);
-        				lretCode = -1;
-        	    		lretMsg = "UNZIP - [ERROR] Exception when extracting "+entry.getName()+" to "+entryDestination.getAbsolutePath()+" - "+e;
-        	    		break;
-        			}
-        			finally{
-        				//close streams ignoring exceptions
-            			IOUtils.closeQuietly(in);
-            			IOUtils.closeQuietly(out);
-        			}
+	        			try{
+	                    			IOUtils.copy(in, out);
+	        			}
+	        			catch(Exception e){
+
+	        				if(isErrorActive){
+	                			activityLogger.error(RuntimeMessageBundle.ERROR_EXTRACT_ENTRY, new Object[]{entry.getName(), entryDestination.getAbsolutePath(), e.getMessage()});
+	                		}	
+	                		throw new UnzipFault(activityContext, RuntimeMessageBundle.ERROR_EXTRACT_ENTRY.getErrorCode(), RuntimeMessageBundle.ERROR_EXTRACT_ENTRY, new Object[]{entry.getName(), entryDestination.getAbsolutePath(), e.getMessage()});
+	        			}
+	        			finally{
+	        				//close streams ignoring exceptions
+	            			IOUtils.closeQuietly(in);
+	            			IOUtils.closeQuietly(out);
+	        			}
                 	}
             	}
             }
 			catch(Exception e){
-				System.out.println("UNZIP - [ERROR] Exception when unzipping "+ziplocation+zipname+": "+e);
-	    		lretCode = -1;
-	    		lretMsg = "UNZIP - [ERROR] Exception when unzipping "+ziplocation+zipname+": "+e;
+				if(isErrorActive){
+        			activityLogger.error(RuntimeMessageBundle.ERROR_UNZIPPING, new Object[]{ziplocation, zipname, e.getMessage()});
+        		}	
+        		throw new UnzipFault(activityContext, RuntimeMessageBundle.ERROR_UNZIPPING.getErrorCode(), RuntimeMessageBundle.ERROR_UNZIPPING, new Object[]{ziplocation, zipname, e.getMessage()});
 			}
             // create output data according the output structure
             result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-			// end-custom-code
-        } catch (Exception e) {
+        }
+        catch(UnzipFault uzex){
+        	throw uzex;
+        }
+        catch (Exception e) {
             throw new ActivityFault(activityContext, new LocalizedMessage(
 						RuntimeMessageBundle.ERROR_OCCURED_RETRIEVE_RESULT, new Object[] {activityContext.getActivityName()}));
         }
@@ -225,14 +232,12 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 	        String serializedOutputNode = XMLUtils.serializeNode(result, processContext.getXMLProcessingContext());
 			activityLogger.debug(RuntimeMessageBundle.DEBUG_PLUGIN_ACTIVITY_OUTPUT, new Object[] {activityContext.getActivityName(), serializedOutputNode, activityContext.getActivityName()});
 		}
-        System.out.println("UNZIP - [INFO] End");
+        if(isTraceActive){
+			activityLogger.trace(RuntimeMessageBundle.TRACE_UNZIP_ACTIVITY_END, new Object[]{});
+		}
         return result;
 	}
 	/**
-	 * <!-- begin-custom-doc -->
-	 *
-	 *
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *  
 	 * This method to build the output after finishing the business.
@@ -249,17 +254,10 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 	
 	    //create output according the xsd file
 	    buildStructuredOutput(inputData, UnzipOutput, processingContext, data);
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
 	    return UnzipOutput;
 	}
 	
 	/**
-	 * <!-- begin-custom-doc -->
-	 *
-	 *
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *
 	 * This method to build the output.
@@ -284,7 +282,7 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 		//if the element's MaxOccurs and MinOccurs are 1, that means this element's size is 1
 		N retCode = noteFactory.createElement("", "retCode", "");
 		mutableModel.appendChild(UnzipOutput, retCode);
-		//set default value here, please set value by your business
+
 		atom = atomBridge.createInteger(new Integer(lretCode));
 		N retCodevalueNode = noteFactory.createText(atomBridge.getC14NForm(atom));
 		mutableModel.appendChild(retCode, retCodevalueNode);
@@ -292,18 +290,13 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 		//if the element's MinOccurs are 0, that means this element is option, it is depends on your business, if there is data, you can create node for it
 		N retMsg = noteFactory.createElement("", "retMsg", "");
 		mutableModel.appendChild(UnzipOutput, retMsg);
-		//set default value here, please set value by your business
+
 		N retMsgvalueNode = noteFactory.createText(lretMsg);
 		mutableModel.appendChild(retMsg, retMsgvalueNode);
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
+
     }
 	
     /**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *
 	 * This method to get the root element of output.
@@ -327,16 +320,10 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
 		}
         N output = builder.getNode();
         N resultList = model.getFirstChild(output);
-        // begin-custom-code
-        // add your own business code here
-        // end-custom-code
         return resultList;
     }
     
 	/**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
      * Gets the String type parameter from the input by name.
      * @param inputData
@@ -357,9 +344,6 @@ public class UnzipSynchronousActivity<N> extends SyncActivity<N> implements Comp
      }
      
  	/**
- 	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
      * Gets the Boolean type parameter from the input by name.
      * @param inputData

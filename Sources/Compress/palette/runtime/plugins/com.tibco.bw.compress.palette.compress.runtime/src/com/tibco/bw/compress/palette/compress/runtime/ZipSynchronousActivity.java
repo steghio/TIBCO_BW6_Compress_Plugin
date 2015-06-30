@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 
 import com.tibco.bw.compress.palette.compress.runtime.RuntimeMessageBundle;
+import com.tibco.bw.compress.palette.compress.runtime.fault.ZipFault;
 import com.tibco.bw.compress.palette.compress.model.compress.Zip;
 import com.tibco.bw.runtime.ActivityFault;
 import com.tibco.bw.runtime.SyncActivity;
@@ -48,6 +49,11 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 	//return parameters
 	protected int lretCode = 0;
 	protected String lretMsg = "";
+	//log settings - INFO should be reserved for ENGINE logs
+	private boolean isDebugActive = false;
+	private boolean isWarnActive = false;
+	private boolean isErrorActive = false;
+	private boolean isTraceActive = false;
 	
 	//aux method for zipping
 	private void dozip(File myFile, String baseDir) throws Exception{
@@ -67,13 +73,17 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 			//add file
 			tmp_fis = new FileInputStream(myFile);
 			try{
-				System.out.println("ZIP - [DEBUG] Adding entry "+entryName+" to zip");
+				if(isDebugActive){
+					activityLogger.debug(RuntimeMessageBundle.DEBUG_ADD_ZIP_ENTRY,new Object[] {entryName});
+				}
 				zip_out.putArchiveEntry(new ZipArchiveEntry(myFile, entryName));
-                		IOUtils.copy(tmp_fis, zip_out);
+				IOUtils.copy(tmp_fis, zip_out);
 				zip_out.closeArchiveEntry();
 			}
 			catch(Exception e){
-				System.out.println("ZIP - [ERROR] Exception when adding entry "+entryName+" to zip: "+e);
+				if(isErrorActive){
+					activityLogger.error(RuntimeMessageBundle.ERROR_ADD_ZIP_ENTRY,new Object[] {entryName, e.getMessage()});
+				}
 				throw e;
 			}
 			finally{
@@ -85,9 +95,6 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 	@Property
 	public Zip activityConfig;
     /**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 * 
 	 * This method is called to initialize the activity. It is called by the 
@@ -99,15 +106,13 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 	@Override
 	public void init() throws ActivityLifecycleFault {
 		super.init();
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
+		isDebugActive = getActivityLogger().isDebugEnabled();
+		isWarnActive = getActivityLogger().isWarnEnabled();
+		isErrorActive = getActivityLogger().isErrorEnabled();
+		isTraceActive = getActivityLogger().isTraceEnabled();
 	}
 	
 	/**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 * 
 	 * This method is called when an activity is destroyed. It is called by the BusinessWorks Engine and 
@@ -116,15 +121,9 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
     @Override
 	public void destroy() {
 		super.destroy();
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
 	}
 	
     /**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *
      * The implementation of this method defines the execution behavior of the synchronous activity.  
@@ -145,7 +144,7 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
      *           Thrown if the activity execution is unsuccessful or encounters an error.
 	 */
 	@Override
-	public N execute(N input, ProcessContext<N> processContext) throws ActivityFault {
+	public N execute(N input, ProcessContext<N> processContext) throws ActivityFault, ZipFault {
         if(getActivityLogger().isDebugEnabled()){
 	        String serializedInputNode = XMLUtils.serializeNode(input, processContext.getXMLProcessingContext());
 		    activityLogger.debug(RuntimeMessageBundle.DEBUG_PLUGIN_ACTIVITY_INPUT, new Object[] {activityContext.getActivityName(), serializedInputNode});
@@ -166,32 +165,34 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
             zipname = getInputParameterStringValueByName(input, processContext.getXMLProcessingContext(), "zipFilename");
             createDirs = getInputParameterBooleanValueByName(input, processContext.getXMLProcessingContext(), "createDirs");
             overwrite = getInputParameterBooleanValueByName(input, processContext.getXMLProcessingContext(), "overwrite");
-            System.out.println("ZIP - [INFO] Started");
-            System.out.println("ZIP - [DEBUG] Input: location = "+location+" - name = "+name+" - ziplocation = "+ziplocation+" - zipname = "+zipname+" - createDirs = "+createDirs+" - overwrite = "+overwrite);
+            if(isTraceActive){
+            	activityLogger.trace(RuntimeMessageBundle.TRACE_ZIP_ACTIVITY_START, new Object[]{});
+            }
+            if(isDebugActive){
+            	activityLogger.debug(RuntimeMessageBundle.DEBUG_ZIP_ACTIVITY_INPUT, new Object[]{location, name, ziplocation, zipname, createDirs, overwrite});
+            }
             try{ 
             	//check if file/folder to be zipped exists
             	File f = new File(location+name);
             	if(!f.exists()){
-            		System.out.println("ZIP - [ERROR] File does not exists "+f.getAbsolutePath());
-    	    		lretCode = -1;
-    	    		lretMsg = "ZIP - [ERROR] File does not exists "+f.getAbsolutePath();
-    	    		// create output data according the output structure
-    	            result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-    	    		return result;
+            		if(isErrorActive){
+            			activityLogger.error(RuntimeMessageBundle.ERROR_FILE_NOT_FOUND, new Object[]{f.getAbsolutePath()});
+            		}
+            		throw new ZipFault(activityContext, RuntimeMessageBundle.ERROR_FILE_NOT_FOUND.getErrorCode(), RuntimeMessageBundle.ERROR_FILE_NOT_FOUND, new Object[]{f.getAbsolutePath()});
             	}
             	//check if location where to create the zip exists
             	File fziploc = new File(ziplocation);
             	if(!fziploc.exists() && createDirs){
-            		System.out.println("ZIP - [DEBUG] Creating directory: "+fziploc.toString());
+                    if(isDebugActive){
+                    	activityLogger.debug(RuntimeMessageBundle.DEBUG_CREATE_DIR, new Object[]{fziploc.toString()});
+                    }
             		fziploc.mkdirs();
             	}
             	else if(!fziploc.exists() && !createDirs){
-            		System.out.println("ZIP - [WARN] Zipfile path does not exists "+fziploc.getAbsolutePath());
-    	    		lretCode = 2;
-    	    		lretMsg = "ZIP - [WARN] Zipfile path does not exists "+fziploc.getAbsolutePath();
-    	    		// create output data according the output structure
-    	            result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-    	    		return result;
+            		if(isWarnActive){
+            			activityLogger.warn(RuntimeMessageBundle.WARN_PATH_NOT_EXISTS, new Object[]{fziploc.getAbsolutePath()});
+            		}
+    	    		throw new ZipFault(activityContext, RuntimeMessageBundle.WARN_PATH_NOT_EXISTS.getErrorCode(), RuntimeMessageBundle.WARN_PATH_NOT_EXISTS, new Object[]{fziploc.getAbsolutePath()});
             	}
             	//check if zipfile already exists
             	File fzipname = new File(ziplocation+zipname+".zip");
@@ -199,44 +200,51 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
             	//if overwrite is selected, make first a backup copy so that we can recover it in case an exception occurred
             	if(fzipname.exists() && overwrite){
             		fzipnamebak = new File(ziplocation+zipname+".zip.bak");
-            		System.out.println("ZIP - [DEBUG] Renaming: "+fzipname.toString()+" to: "+fzipnamebak.toString());
+            		if(isDebugActive){
+            			activityLogger.debug(RuntimeMessageBundle.DEBUG_BACKUP_EXISTING_ZIP, new Object[]{fzipname.toString(), fzipnamebak.toString()});
+            		}
             		fzipname.renameTo(fzipnamebak);          		
             	}
             	else if(fzipname.exists() && !overwrite){
-            		System.out.println("ZIP - [WARN] Zipfile already exists: "+fzipname.getAbsolutePath());
-    	    		lretCode = 1;
-    	    		lretMsg = "ZIP - [WARN] Zipfile already exists: "+fzipname.getAbsolutePath();
-    	    		// create output data according the output structure
-    	            result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-    	    		return result;
+            		if(isWarnActive){
+            			activityLogger.warn(RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS, new Object[]{fzipname.getAbsolutePath()});
+            		}
+            		throw new ZipFault(activityContext, RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS.getErrorCode(), RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS, new Object[]{fzipname.getAbsolutePath()});
             	}
 	        	//out writes the final file, zip_out creates the zip archive
 	            out = new FileOutputStream(new File(ziplocation+zipname+".zip"));
 	            zip_out = new ArchiveStreamFactory().createArchiveOutputStream(ArchiveStreamFactory.ZIP, out);
 		    	//zip it
-		    	System.out.println("ZIP - [INFO] Zipping "+f.toString());
+        		if(isTraceActive){
+        			activityLogger.trace(RuntimeMessageBundle.TRACE_ZIPPING, new Object[]{f.toString()});
+        		}
 	    		//first time baseDir is empty
 	    		dozip(f, "");
 	    		//close archive 
 	    		zip_out.finish();
 	    		if(fzipnamebak != null){
-	    			System.out.println("ZIP - [DEBUG] Deleting backup "+fzipnamebak.toString());
+	        		if(isDebugActive){
+	        			activityLogger.trace(RuntimeMessageBundle.DEBUG_DELETE_BACKUP, new Object[]{fzipnamebak.toString()});
+	        		}
 	    			Files.delete(fzipnamebak.toPath());
 	    		}
 	    	}
 	    	catch(Exception e){
-	    		System.out.println("ZIP - [ERROR] Exception when creating zip "+ziplocation+zipname+": "+e);
-	    		lretCode = -1;
-	    		lretMsg = "ZIP - [ERROR] Excetpion when creating zip "+ziplocation+zipname+": "+e;
-	    		//throw(e);
+        		if(isErrorActive){
+        			activityLogger.error(RuntimeMessageBundle.ERROR_ZIPPING, new Object[]{ziplocation, zipname, e.getMessage()});
+        		}	
+        		throw new ZipFault(activityContext, RuntimeMessageBundle.ERROR_ZIPPING.getErrorCode(), RuntimeMessageBundle.ERROR_ZIPPING, new Object[]{ziplocation, zipname, e.getMessage()});
 	    	}
-	    	finally{
-	    		if(out != null)out.close();
-	    	}
+            finally{
+            	if(out != null)out.close();
+            }
             // create output data according the output structure
             result = evalOutput(input, processContext.getXMLProcessingContext(), null);
-			// end-custom-code
-        } catch (Exception e) {
+        } 
+        catch(ZipFault zex){
+        	throw zex;
+        }
+        catch (Exception e) {
             throw new ActivityFault(activityContext, new LocalizedMessage(
 						RuntimeMessageBundle.ERROR_OCCURED_RETRIEVE_RESULT, new Object[] {activityContext.getActivityName()}));
         }
@@ -245,14 +253,12 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 	        String serializedOutputNode = XMLUtils.serializeNode(result, processContext.getXMLProcessingContext());
 			activityLogger.debug(RuntimeMessageBundle.DEBUG_PLUGIN_ACTIVITY_OUTPUT, new Object[] {activityContext.getActivityName(), serializedOutputNode, activityContext.getActivityName()});
 		}
-        System.out.println("ZIP - [INFO] End");
+        if(isTraceActive){
+			activityLogger.trace(RuntimeMessageBundle.TRACE_ZIP_ACTIVITY_END, new Object[]{});
+		}
         return result;
 	}
 	/**
-	 * <!-- begin-custom-doc -->
-	 *
-	 *
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *  
 	 * This method to build the output after finishing the business.
@@ -269,17 +275,10 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 	
 	    //create output according the xsd file
 	    buildStructuredOutput(inputData, ZipOutput, processingContext, data);
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
 	    return ZipOutput;
 	}
 	
 	/**
-	 * <!-- begin-custom-doc -->
-	 *
-	 *
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *
 	 * This method to build the output.
@@ -304,7 +303,6 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 		//if the element's MaxOccurs and MinOccurs are 1, that means this element's size is 1
 		N retCode = noteFactory.createElement("", "retCode", "");
 		mutableModel.appendChild(ZipOutput, retCode);
-		//set default value here, please set value by your business
 		atom = atomBridge.createInteger(new Integer(lretCode));
 		N retCodevalueNode = noteFactory.createText(atomBridge.getC14NForm(atom));
 		mutableModel.appendChild(retCode, retCodevalueNode);
@@ -312,18 +310,11 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 		//if the element's MinOccurs are 0, that means this element is option, it is depends on your business, if there is data, you can create node for it
 		N retMsg = noteFactory.createElement("", "retMsg", "");
 		mutableModel.appendChild(ZipOutput, retMsg);
-		//set default value here, please set value by your business
 		N retMsgvalueNode = noteFactory.createText(lretMsg);
 		mutableModel.appendChild(retMsg, retMsgvalueNode);
-		// begin-custom-code
-        // add your own business code here
-        // end-custom-code
     }
 	
     /**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
 	 *
 	 * This method to get the root element of output.
@@ -347,16 +338,10 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
 		}
         N output = builder.getNode();
         N resultList = model.getFirstChild(output);
-        // begin-custom-code
-        // add your own business code here
-        // end-custom-code
         return resultList;
     }
     
 	/**
-	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
      * Gets the String type parameter from the input by name.
      * @param inputData
@@ -377,9 +362,6 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
      }
      
  	/**
- 	 * <!-- begin-custom-doc -->
-	 * 
-	 * <!-- end-custom-doc -->
 	 * @generated
      * Gets the Boolean type parameter from the input by name.
      * @param inputData

@@ -34,3 +34,5 @@ Bundle-Vendor: %providerName
 Service-Component:  OSGI-INF/zip.xml, OSGI-INF/unzip.xml
 Provide-Capability: com.tibco.bw.palette; name=bw.compress
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: META-INF/lib/commons-compress-1.8.1.jar,
+ .

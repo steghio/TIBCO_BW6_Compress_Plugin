@@ -22,4 +22,29 @@ public class RuntimeMessageBundle extends MessageBundle
     public static BundleMessage DEBUG_PLUGIN_ACTIVITY_OUTPUT;
     public static BundleMessage ERROR_OCCURED_RETRIEVE_RESULT;
     public static BundleMessage ERROR_OCCURED_INVOKE_EXECUTE_METHOD;
+    
+    //custom messages - debug
+    public static BundleMessage DEBUG_ZIP_ACTIVITY_INPUT;
+    public static BundleMessage DEBUG_ADD_ZIP_ENTRY;
+    public static BundleMessage DEBUG_CREATE_DIR;
+    public static BundleMessage DEBUG_BACKUP_EXISTING_ZIP;
+    public static BundleMessage DEBUG_DELETE_BACKUP;
+    public static BundleMessage DEBUG_UNZIP_ACTIVITY_INPUT;
+    public static BundleMessage DEBUG_EXTRACT_ITEM;
+    //custom messages - warn
+    public static BundleMessage WARN_PATH_NOT_EXISTS;
+    public static BundleMessage WARN_FILE_ALREADY_EXISTS;
+    //custom messages - error
+    public static BundleMessage ERROR_ADD_ZIP_ENTRY;
+    public static BundleMessage ERROR_FILE_NOT_FOUND;
+    public static BundleMessage ERROR_ZIPPING;
+    public static BundleMessage ERROR_UNZIPPING;
+    public static BundleMessage ERROR_EXTRACT_ENTRY;
+    //custom messages - trace
+    public static BundleMessage TRACE_ZIP_ACTIVITY_START;
+    public static BundleMessage TRACE_ZIPPING;
+    public static BundleMessage TRACE_ZIP_ACTIVITY_END;
+    public static BundleMessage TRACE_UNZIP_ACTIVITY_START;
+    public static BundleMessage TRACE_OVERWRITE_ITEM;
+    public static BundleMessage TRACE_UNZIP_ACTIVITY_END;
 }
