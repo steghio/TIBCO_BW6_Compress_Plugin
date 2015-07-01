@@ -9,7 +9,7 @@ Please refer to the PDK development doc for how setup Eclipse and the child Ecli
 
 The sources are under Sources/Compress
 
-The sample project SampleCompress under Sources can instead be imported as "Studio project from Archive". It requires you to install the Compress plugin in your Eclipse to work
+The sample projects SampleZip and SampleUnzip under Sources can instead be imported as "Studio project from Archive". They require you to install the Compress plugin in your Eclipse to work
 
 If you intend to view/edit the source, after importing the Design/Module projects in your workspace, make sure to change the Target Platform to "Running Platform": Window->Preferences->Plug-in Development->Target Platform
 
