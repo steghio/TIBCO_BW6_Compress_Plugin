@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.tibco.bw.compress.palette.compress.design;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.FINAL
 Bundle-Localization: plugin
 Bundle-Activator: com.tibco.bw.compress.palette.compress.design.Compress
 Bundle-Vendor: %providerName

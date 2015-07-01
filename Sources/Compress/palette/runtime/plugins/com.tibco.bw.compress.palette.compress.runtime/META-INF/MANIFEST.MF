@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Localization: plugin
 Bundle-SymbolicName: com.tibco.bw.compress.palette.compress.runtime
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.FINAL
 Export-Package: com.tibco.bw.compress.palette.compress.runtime;version="1.0.0";
   uses:="com.tibco.neo.localized,com.tibco.bw.runtime,javax.activation,
    com.tibco.neo.localized"

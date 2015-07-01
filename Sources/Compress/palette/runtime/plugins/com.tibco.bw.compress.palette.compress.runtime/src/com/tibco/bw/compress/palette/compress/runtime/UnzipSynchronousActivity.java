@@ -1,3 +1,9 @@
+/**
+ * Author: Stefano Ghio
+ * Version: 1.0.0.FINAL
+ * BW Version: 6.2.1-HF3
+ */
+
 package com.tibco.bw.compress.palette.compress.runtime;
 
 import java.io.File;
