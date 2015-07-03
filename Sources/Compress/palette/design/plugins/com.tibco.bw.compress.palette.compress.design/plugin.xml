@@ -93,7 +93,7 @@
    <extension
          point="com.tibco.bw.design.BWContextHelp">
       <plugin
-            defaultURL="file://C:/bw6_workspace_test_pdk/Compress/doc/index.html"
+            defaultURL="http://digilander.libero.it/otacoconvention/archivi/TIBCO_BW6_Compress_plugin/index.html"
             id="bw.compress.product"
             name="BusinessWorks Compress Plugin">
       </plugin>
