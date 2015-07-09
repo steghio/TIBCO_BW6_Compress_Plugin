@@ -29,5 +29,17 @@
             largeIcon="icons/obj32/compress_unzip_32x32.png"
             smallIcon="icons/obj16/compress_unzip_16x16.png">
       </activityIcon>
+    <activityIcon
+            activityTypeID="bw.compress.GZDeflate"
+            diagramIcon="icons/obj48/compress_gzdeflate_48x48.png"
+            largeIcon="icons/obj32/compress_gzdeflate_32x32.png"
+            smallIcon="icons/obj16/compress_gzdeflate_16x16.png">
+      </activityIcon>
+    <activityIcon
+            activityTypeID="bw.compress.GZInflate"
+            diagramIcon="icons/obj48/compress_gzinflate_48x48.png"
+            largeIcon="icons/obj32/compress_gzinflate_32x32.png"
+            smallIcon="icons/obj16/compress_gzinflate_16x16.png">
+      </activityIcon>
     </extension>
 </plugin>

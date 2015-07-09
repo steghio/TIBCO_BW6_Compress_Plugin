@@ -1,0 +1,9 @@
+v1.1.0.FINAL
+
+- handle gz files for deflate and inflate
+- revamped icons
+v1.0.0.FINAL
+
+- handle zip files with zip and unzip
+- online doc
+- sample zip and unzip projects

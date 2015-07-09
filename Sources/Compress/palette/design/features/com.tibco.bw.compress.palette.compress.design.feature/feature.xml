@@ -3,7 +3,7 @@
 <feature
       id="com.tibco.bw.compress.palette.compress.design.feature"
       label="%featureName"
-      version="1.0.0.FINAL"
+      version="1.1.0.FINAL"
       provider-name="%providerName">
 
    <description>
@@ -32,7 +32,7 @@
          id="com.tibco.bw.compress.palette.compress.design"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="1.1.0.FINAL"
          unpack="false"/>
 
 </feature>

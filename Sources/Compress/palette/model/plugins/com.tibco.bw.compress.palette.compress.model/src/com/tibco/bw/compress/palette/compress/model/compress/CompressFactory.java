@@ -45,6 +45,24 @@ public interface CompressFactory extends EFactory
   Unzip createUnzip();
 
   /**
+   * Returns a new object of class '<em>GZ Deflate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>GZ Deflate</em>'.
+   * @generated
+   */
+  GZDeflate createGZDeflate();
+
+  /**
+   * Returns a new object of class '<em>GZ Inflate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>GZ Inflate</em>'.
+   * @generated
+   */
+  GZInflate createGZInflate();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

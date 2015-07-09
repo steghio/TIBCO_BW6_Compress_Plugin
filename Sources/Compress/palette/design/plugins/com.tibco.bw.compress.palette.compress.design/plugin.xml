@@ -50,6 +50,30 @@
          </palette>
       </activityType>
 
+      <activityType
+            activityTypeID="bw.compress.GZDeflate"
+            name="%compress.activity.GZDeflate.name"
+            type="Standard"
+            priority="100"
+            tooltip="%compress.activity.GZDeflate.tooltip"
+            visible="true">
+         <palette
+               paletteID="bw.compress">
+         </palette>
+      </activityType>
+
+      <activityType
+            activityTypeID="bw.compress.GZInflate"
+            name="%compress.activity.GZInflate.name"
+            type="Standard"
+            priority="100"
+            tooltip="%compress.activity.GZInflate.tooltip"
+            visible="true">
+         <palette
+               paletteID="bw.compress">
+         </palette>
+      </activityType>
+
       
    </extension>
    
@@ -62,6 +86,14 @@
       <signature
             activityTypeID="bw.compress.Unzip"
             signatureClass="com.tibco.bw.compress.palette.compress.design.unzip.UnzipSignature">
+      </signature>
+      <signature
+            activityTypeID="bw.compress.GZDeflate"
+            signatureClass="com.tibco.bw.compress.palette.compress.design.gzdeflate.GZDeflateSignature">
+      </signature>
+      <signature
+            activityTypeID="bw.compress.GZInflate"
+            signatureClass="com.tibco.bw.compress.palette.compress.design.gzinflate.GZInflateSignature">
       </signature>
    </extension>
    
@@ -80,6 +112,20 @@
             ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
             instanceName="%compress.activity.default.Unzip.name"
             modelHelperClass="com.tibco.bw.compress.palette.compress.design.unzip.UnzipModelHelper">
+      </config>
+      <config
+            activityTypeID="bw.compress.GZDeflate"
+            eClassName="GZDeflate"
+            ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
+            instanceName="%compress.activity.default.GZDeflate.name"
+            modelHelperClass="com.tibco.bw.compress.palette.compress.design.gzdeflate.GZDeflateModelHelper">
+      </config>
+      <config
+            activityTypeID="bw.compress.GZInflate"
+            eClassName="GZInflate"
+            ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
+            instanceName="%compress.activity.default.GZInflate.name"
+            modelHelperClass="com.tibco.bw.compress.palette.compress.design.gzinflate.GZInflateModelHelper">
       </config>
    </extension>
 

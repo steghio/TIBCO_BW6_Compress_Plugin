@@ -98,6 +98,45 @@ public interface CompressPackage extends EPackage
 
 
   /**
+   * The meta object id for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.GZDeflateImpl <em>GZ Deflate</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.GZDeflateImpl
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getGZDeflate()
+   * @generated
+   */
+  int GZ_DEFLATE = 2;
+
+  /**
+   * The number of structural features of the '<em>GZ Deflate</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GZ_DEFLATE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.GZInflateImpl <em>GZ Inflate</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.GZInflateImpl
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getGZInflate()
+   * @generated
+   */
+  int GZ_INFLATE = 3;
+
+  /**
+   * The number of structural features of the '<em>GZ Inflate</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GZ_INFLATE_FEATURE_COUNT = 0;
+
+
+  /**
    * Returns the meta object for class '{@link com.tibco.bw.compress.palette.compress.model.compress.Zip <em>Zip</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -116,6 +155,26 @@ public interface CompressPackage extends EPackage
    * @generated
    */
   EClass getUnzip();
+
+  /**
+   * Returns the meta object for class '{@link com.tibco.bw.compress.palette.compress.model.compress.GZDeflate <em>GZ Deflate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>GZ Deflate</em>'.
+   * @see com.tibco.bw.compress.palette.compress.model.compress.GZDeflate
+   * @generated
+   */
+  EClass getGZDeflate();
+
+  /**
+   * Returns the meta object for class '{@link com.tibco.bw.compress.palette.compress.model.compress.GZInflate <em>GZ Inflate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>GZ Inflate</em>'.
+   * @see com.tibco.bw.compress.palette.compress.model.compress.GZInflate
+   * @generated
+   */
+  EClass getGZInflate();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -159,6 +218,26 @@ public interface CompressPackage extends EPackage
      * @generated
      */
     EClass UNZIP = eINSTANCE.getUnzip();
+
+    /**
+     * The meta object literal for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.GZDeflateImpl <em>GZ Deflate</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.GZDeflateImpl
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getGZDeflate()
+     * @generated
+     */
+    EClass GZ_DEFLATE = eINSTANCE.getGZDeflate();
+
+    /**
+     * The meta object literal for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.GZInflateImpl <em>GZ Inflate</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.GZInflateImpl
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getGZInflate()
+     * @generated
+     */
+    EClass GZ_INFLATE = eINSTANCE.getGZInflate();
 
   }
 

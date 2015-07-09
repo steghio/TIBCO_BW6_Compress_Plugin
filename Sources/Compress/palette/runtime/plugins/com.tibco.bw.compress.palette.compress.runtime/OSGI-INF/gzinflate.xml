@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Overridable true -->
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" factory="com.tibco.bw.palette.compress.GZInflate" name="bw.compress.GZInflate">
+   <implementation class="com.tibco.bw.compress.palette.compress.runtime.GZInflateSynchronousActivity"/>
+   <property name="activityTypeID" type="String" value="bw.compress.GZInflate"/>
+   <property name="modelPackageClass" type="String" value="com.tibco.bw.compress.palette.compress.model.compress.CompressPackage"/>
+   <property name="runtimeClass" type="String" value="com.tibco.bw.compress.palette.compress.runtime.GZInflateSynchronousActivity"/>
+</scr:component>

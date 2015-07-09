@@ -25,4 +25,26 @@
       <details key="helpdocuuid" value="15bda2a5-9615-45c2-bf10-1fc94f53d0df"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GZDeflate">
+    <eAnnotations source="dkactivityconfig">
+      <details key="activitytype" value="Synchronous"/>
+      <details key="schemaType" value="XSD Editor"/>
+      <details key="schemaFile" value="C:/bw6_workspace_test_pdk/Compress/palette/design/plugins/com.tibco.bw.compress.palette.compress.design/schema/GZDeflateSchema.xsd"/>
+      <details key="inputelementname" value="GZDeflateInput"/>
+      <details key="outputelementname" value="GZDeflateOutput"/>
+      <details key="faultelementname" value="GZDeflateFault"/>
+      <details key="helpdocuuid" value="6dd301d2-a8ed-4f2d-88e7-3f5056707b92"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GZInflate">
+    <eAnnotations source="dkactivityconfig">
+      <details key="activitytype" value="Synchronous"/>
+      <details key="schemaType" value="XSD Editor"/>
+      <details key="schemaFile" value="C:/bw6_workspace_test_pdk/Compress/palette/design/plugins/com.tibco.bw.compress.palette.compress.design/schema/GZInflateSchema.xsd"/>
+      <details key="inputelementname" value="GZInflateInput"/>
+      <details key="outputelementname" value="GZInflateOutput"/>
+      <details key="faultelementname" value="GZInflateFault"/>
+      <details key="helpdocuuid" value="df66cbe3-1430-4cb5-8475-c0446752f060"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

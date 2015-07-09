@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tns="http://www.tibco.com/Compress/GZDeflate" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/Compress/GZDeflate">
+  <xsd:element name="GZDeflateInput">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="location" type="xsd:string"/>
+        <xsd:element name="filename" type="xsd:string"/>
+        <xsd:element name="deflateLocation" type="xsd:string"/>
+        <xsd:element name="deflateFilename" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="createDirs" type="xsd:boolean"/>
+        <xsd:element minOccurs="0" name="overwrite" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GZDeflateOutput">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="retCode" type="xsd:integer"/>
+        <xsd:element minOccurs="0" name="retMsg" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GZDeflateFault">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="retCode" type="xsd:integer"/>
+        <xsd:element minOccurs="0" name="retMsg" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

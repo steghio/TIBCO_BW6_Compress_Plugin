@@ -7,5 +7,7 @@
       disposableProviderFactory="true" ecorePackage="compress.activity.ecore#/">
     <genClasses ecoreClass="compress.activity.ecore#//Zip"/>
     <genClasses ecoreClass="compress.activity.ecore#//Unzip"/>
+    <genClasses ecoreClass="compress.activity.ecore#//GZDeflate"/>
+    <genClasses ecoreClass="compress.activity.ecore#//GZInflate"/>
   </genPackages>
 </genmodel:GenModel>

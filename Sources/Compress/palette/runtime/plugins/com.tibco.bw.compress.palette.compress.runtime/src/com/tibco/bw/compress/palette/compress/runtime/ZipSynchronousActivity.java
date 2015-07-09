@@ -205,9 +205,9 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
             	File fzipnamebak = null;
             	//if overwrite is selected, make first a backup copy so that we can recover it in case an exception occurred
             	if(fzipname.exists() && overwrite){
-            		fzipnamebak = new File(ziplocation+zipname+".zip.bak");
+            		fzipnamebak = new File(fzipname.getAbsolutePath()+".bak");
             		if(isDebugActive){
-            			activityLogger.debug(RuntimeMessageBundle.DEBUG_BACKUP_EXISTING_ZIP, new Object[]{fzipname.toString(), fzipnamebak.toString()});
+            			activityLogger.debug(RuntimeMessageBundle.DEBUG_BACKUP_EXISTING_FILE, new Object[]{fzipname.toString(), fzipnamebak.toString()});
             		}
             		fzipname.renameTo(fzipnamebak);          		
             	}
@@ -218,7 +218,7 @@ public class ZipSynchronousActivity<N> extends SyncActivity<N> implements Compre
             		throw new ZipFault(activityContext, RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS.getErrorCode(), RuntimeMessageBundle.WARN_FILE_ALREADY_EXISTS, new Object[]{fzipname.getAbsolutePath()});
             	}
 	        	//out writes the final file, zip_out creates the zip archive
-	            out = new FileOutputStream(new File(ziplocation+zipname+".zip"));
+	            out = new FileOutputStream(fzipname);
 	            zip_out = new ArchiveStreamFactory().createArchiveOutputStream(ArchiveStreamFactory.ZIP, out);
 		    	//zip it
         		if(isTraceActive){

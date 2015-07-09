@@ -110,6 +110,20 @@ public class CompressSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CompressPackage.GZ_DEFLATE:
+      {
+        GZDeflate gzDeflate = (GZDeflate)theEObject;
+        T result = caseGZDeflate(gzDeflate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CompressPackage.GZ_INFLATE:
+      {
+        GZInflate gzInflate = (GZInflate)theEObject;
+        T result = caseGZInflate(gzInflate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -142,6 +156,38 @@ public class CompressSwitch<T>
    * @generated
    */
   public T caseUnzip(Unzip object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>GZ Deflate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>GZ Deflate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGZDeflate(GZDeflate object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>GZ Inflate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>GZ Inflate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGZInflate(GZInflate object)
   {
     return null;
   }
