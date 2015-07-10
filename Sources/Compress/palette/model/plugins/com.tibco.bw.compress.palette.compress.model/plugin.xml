@@ -41,5 +41,17 @@
             largeIcon="icons/obj32/compress_gzinflate_32x32.png"
             smallIcon="icons/obj16/compress_gzinflate_16x16.png">
       </activityIcon>
+    <activityIcon
+            activityTypeID="bw.compress.Tar"
+            diagramIcon="icons/obj48/compress_tar_48x48.png"
+            largeIcon="icons/obj32/compress_tar_32x32.png"
+            smallIcon="icons/obj16/compress_tar_16x16.png">
+      </activityIcon>
+    <activityIcon
+            activityTypeID="bw.compress.Untar"
+            diagramIcon="icons/obj48/compress_untar_48x48.png"
+            largeIcon="icons/obj32/compress_untar_32x32.png"
+            smallIcon="icons/obj16/compress_untar_16x16.png">
+      </activityIcon>
     </extension>
 </plugin>

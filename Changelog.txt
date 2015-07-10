@@ -1,9 +1,13 @@
+v1.2.0.FINAL
+
+- handle tar files and folders with tar and untar
+
 v1.1.0.FINAL
 
 - handle gz files for deflate and inflate
 - revamped icons
 v1.0.0.FINAL
 
-- handle zip files with zip and unzip
+- handle zip files and folders with zip and unzip
 - online doc
 - sample zip and unzip projects

@@ -33,6 +33,9 @@ public class RuntimeMessageBundle extends MessageBundle
     public static BundleMessage DEBUG_EXTRACT_ITEM;
     public static BundleMessage DEBUG_GZ_DEFLATE_ACTIVITY_INPUT;
     public static BundleMessage DEBUG_GZ_INFLATE_ACTIVITY_INPUT;
+    public static BundleMessage DEBUG_TAR_ACTIVITY_INPUT;
+    public static BundleMessage DEBUG_ADD_TAR_ENTRY;
+    public static BundleMessage DEBUG_UNTAR_ACTIVITY_INPUT;
     //custom messages - warn
     public static BundleMessage WARN_PATH_NOT_EXISTS;
     public static BundleMessage WARN_FILE_ALREADY_EXISTS;
@@ -44,6 +47,9 @@ public class RuntimeMessageBundle extends MessageBundle
     public static BundleMessage ERROR_EXTRACT_ENTRY;
     public static BundleMessage ERROR_GZ_DEFLATING;
     public static BundleMessage ERROR_GZ_INFLATING;
+    public static BundleMessage ERROR_ADD_TAR_ENTRY;
+    public static BundleMessage ERROR_TARRING;
+    public static BundleMessage ERROR_UNTARRING;
     //custom messages - trace
     public static BundleMessage TRACE_ZIP_ACTIVITY_START;
     public static BundleMessage TRACE_ZIPPING;
@@ -56,4 +62,9 @@ public class RuntimeMessageBundle extends MessageBundle
     public static BundleMessage TRACE_GZ_INFLATE_ACTIVITY_START;
     public static BundleMessage TRACE_GZ_INFLATE_ACTIVITY_END;
     public static BundleMessage TRACE_DEFLATING;
+    public static BundleMessage TRACE_TAR_ACTIVITY_START;
+    public static BundleMessage TRACE_TARRING;
+    public static BundleMessage TRACE_TAR_ACTIVITY_END;
+    public static BundleMessage TRACE_UNTAR_ACTIVITY_START;
+    public static BundleMessage TRACE_UNTAR_ACTIVITY_END;
 }

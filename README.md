@@ -1,7 +1,7 @@
 # TIBCO_BW6_Compress_Plugin
-TIBCO BusinessWorks 6 Compress Plugin for Zip and GZ activities
+TIBCO BusinessWorks 6 Compress Plugin for Zip, GZ and Tar activities
 
-This plugin adds a Compress palette to BW6 with Zip, Unzip, GZ deflate and GZ inflate activities. It was created and tested on BW6.2.1 HF3
+This plugin adds a Compress palette to BW6 with Zip, Unzip, GZ deflate, GZ inflate, tar and untar activities. It was created and tested on BW6.2.1 HF3
 
 Reference documentation is available at: http://digilander.libero.it/otacoconvention/archivi/TIBCO_BW6_Compress_plugin/index.html
 

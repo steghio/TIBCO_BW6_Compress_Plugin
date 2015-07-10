@@ -72,6 +72,8 @@ public class CompressFactoryImpl extends EFactoryImpl implements CompressFactory
       case CompressPackage.UNZIP: return createUnzip();
       case CompressPackage.GZ_DEFLATE: return createGZDeflate();
       case CompressPackage.GZ_INFLATE: return createGZInflate();
+      case CompressPackage.TAR: return createTar();
+      case CompressPackage.UNTAR: return createUntar();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -119,6 +121,28 @@ public class CompressFactoryImpl extends EFactoryImpl implements CompressFactory
   {
     GZInflateImpl gzInflate = new GZInflateImpl();
     return gzInflate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Tar createTar()
+  {
+    TarImpl tar = new TarImpl();
+    return tar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Untar createUntar()
+  {
+    UntarImpl untar = new UntarImpl();
+    return untar;
   }
 
   /**

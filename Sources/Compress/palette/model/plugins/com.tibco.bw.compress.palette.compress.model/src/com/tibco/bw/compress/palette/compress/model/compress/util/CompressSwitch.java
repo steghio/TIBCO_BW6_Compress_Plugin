@@ -124,6 +124,20 @@ public class CompressSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CompressPackage.TAR:
+      {
+        Tar tar = (Tar)theEObject;
+        T result = caseTar(tar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CompressPackage.UNTAR:
+      {
+        Untar untar = (Untar)theEObject;
+        T result = caseUntar(untar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -188,6 +202,38 @@ public class CompressSwitch<T>
    * @generated
    */
   public T caseGZInflate(GZInflate object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tar</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tar</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTar(Tar object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Untar</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Untar</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUntar(Untar object)
   {
     return null;
   }

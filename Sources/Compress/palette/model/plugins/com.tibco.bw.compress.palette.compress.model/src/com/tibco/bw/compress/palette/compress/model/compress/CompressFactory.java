@@ -63,6 +63,24 @@ public interface CompressFactory extends EFactory
   GZInflate createGZInflate();
 
   /**
+   * Returns a new object of class '<em>Tar</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tar</em>'.
+   * @generated
+   */
+  Tar createTar();
+
+  /**
+   * Returns a new object of class '<em>Untar</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Untar</em>'.
+   * @generated
+   */
+  Untar createUntar();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

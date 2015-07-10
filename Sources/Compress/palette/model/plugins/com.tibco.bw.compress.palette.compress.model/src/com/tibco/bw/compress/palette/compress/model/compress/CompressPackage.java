@@ -137,6 +137,45 @@ public interface CompressPackage extends EPackage
 
 
   /**
+   * The meta object id for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.TarImpl <em>Tar</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.TarImpl
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getTar()
+   * @generated
+   */
+  int TAR = 4;
+
+  /**
+   * The number of structural features of the '<em>Tar</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAR_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.UntarImpl <em>Untar</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.UntarImpl
+   * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getUntar()
+   * @generated
+   */
+  int UNTAR = 5;
+
+  /**
+   * The number of structural features of the '<em>Untar</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNTAR_FEATURE_COUNT = 0;
+
+
+  /**
    * Returns the meta object for class '{@link com.tibco.bw.compress.palette.compress.model.compress.Zip <em>Zip</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -175,6 +214,26 @@ public interface CompressPackage extends EPackage
    * @generated
    */
   EClass getGZInflate();
+
+  /**
+   * Returns the meta object for class '{@link com.tibco.bw.compress.palette.compress.model.compress.Tar <em>Tar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tar</em>'.
+   * @see com.tibco.bw.compress.palette.compress.model.compress.Tar
+   * @generated
+   */
+  EClass getTar();
+
+  /**
+   * Returns the meta object for class '{@link com.tibco.bw.compress.palette.compress.model.compress.Untar <em>Untar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Untar</em>'.
+   * @see com.tibco.bw.compress.palette.compress.model.compress.Untar
+   * @generated
+   */
+  EClass getUntar();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -238,6 +297,26 @@ public interface CompressPackage extends EPackage
      * @generated
      */
     EClass GZ_INFLATE = eINSTANCE.getGZInflate();
+
+    /**
+     * The meta object literal for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.TarImpl <em>Tar</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.TarImpl
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getTar()
+     * @generated
+     */
+    EClass TAR = eINSTANCE.getTar();
+
+    /**
+     * The meta object literal for the '{@link com.tibco.bw.compress.palette.compress.model.compress.impl.UntarImpl <em>Untar</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.UntarImpl
+     * @see com.tibco.bw.compress.palette.compress.model.compress.impl.CompressPackageImpl#getUntar()
+     * @generated
+     */
+    EClass UNTAR = eINSTANCE.getUntar();
 
   }
 

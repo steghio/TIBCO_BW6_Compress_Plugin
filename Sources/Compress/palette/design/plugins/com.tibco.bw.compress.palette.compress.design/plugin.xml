@@ -74,6 +74,30 @@
          </palette>
       </activityType>
 
+      <activityType
+            activityTypeID="bw.compress.Tar"
+            name="%compress.activity.Tar.name"
+            type="Standard"
+            priority="100"
+            tooltip="%compress.activity.Tar.tooltip"
+            visible="true">
+         <palette
+               paletteID="bw.compress">
+         </palette>
+      </activityType>
+
+      <activityType
+            activityTypeID="bw.compress.Untar"
+            name="%compress.activity.Untar.name"
+            type="Standard"
+            priority="100"
+            tooltip="%compress.activity.Untar.tooltip"
+            visible="true">
+         <palette
+               paletteID="bw.compress">
+         </palette>
+      </activityType>
+
       
    </extension>
    
@@ -94,6 +118,14 @@
       <signature
             activityTypeID="bw.compress.GZInflate"
             signatureClass="com.tibco.bw.compress.palette.compress.design.gzinflate.GZInflateSignature">
+      </signature>
+      <signature
+            activityTypeID="bw.compress.Tar"
+            signatureClass="com.tibco.bw.compress.palette.compress.design.tar.TarSignature">
+      </signature>
+      <signature
+            activityTypeID="bw.compress.Untar"
+            signatureClass="com.tibco.bw.compress.palette.compress.design.untar.UntarSignature">
       </signature>
    </extension>
    
@@ -127,6 +159,20 @@
             instanceName="%compress.activity.default.GZInflate.name"
             modelHelperClass="com.tibco.bw.compress.palette.compress.design.gzinflate.GZInflateModelHelper">
       </config>
+      <config
+            activityTypeID="bw.compress.Tar"
+            eClassName="Tar"
+            ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
+            instanceName="%compress.activity.default.Tar.name"
+            modelHelperClass="com.tibco.bw.compress.palette.compress.design.tar.TarModelHelper">
+      </config>
+      <config
+            activityTypeID="bw.compress.Untar"
+            eClassName="Untar"
+            ePackageNSURI="http://ns.tibco.com/bw/palette/compress"
+            instanceName="%compress.activity.default.Untar.name"
+            modelHelperClass="com.tibco.bw.compress.palette.compress.design.untar.UntarModelHelper">
+      </config>
    </extension>
 
    <extension
@@ -139,7 +185,7 @@
    <extension
          point="com.tibco.bw.design.BWContextHelp">
       <plugin
-            defaultURL="http://digilander.libero.it/otacoconvention/archivi/TIBCO_BW6_Compress_plugin/index.html"
+            defaultURL="http://digilander.libero.it/otacoconvention/archivi/TIBCO_BW6_Compress_plugin_doc/index.html"
             id="bw.compress.product"
             name="BusinessWorks Compress Plugin">
       </plugin>

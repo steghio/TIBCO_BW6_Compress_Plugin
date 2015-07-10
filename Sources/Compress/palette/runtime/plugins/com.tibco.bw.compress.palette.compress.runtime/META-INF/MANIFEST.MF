@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Localization: plugin
 Bundle-SymbolicName: com.tibco.bw.compress.palette.compress.runtime
-Bundle-Version: 1.1.0.FINAL
+Bundle-Version: 1.2.0.FINAL
 Export-Package: com.tibco.bw.compress.palette.compress.runtime;version="1.0.0";
   uses:="com.tibco.neo.localized,com.tibco.bw.runtime,javax.activation,
    com.tibco.neo.localized"
@@ -31,7 +31,7 @@ Import-Package: com.tibco.bw.compress.palette.compress.model.compress,
  org.genxdm.xs.resolve;version="[1.0.0,2.0.0)",
  org.genxdm.xs.types;version="[1.0.0,2.0.0)"
 Bundle-Vendor: %providerName
-Service-Component:  OSGI-INF/zip.xml, OSGI-INF/unzip.xml, OSGI-INF/gzdeflate.xml, OSGI-INF/gzinflate.xml
+Service-Component:  OSGI-INF/zip.xml, OSGI-INF/unzip.xml, OSGI-INF/gzdeflate.xml, OSGI-INF/gzinflate.xml,  OSGI-INF/tar.xml, OSGI-INF/untar.xml
 Provide-Capability: com.tibco.bw.palette; name=bw.compress
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: META-INF/lib/commons-compress-1.9.jar,

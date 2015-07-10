@@ -10,6 +10,8 @@ import com.tibco.bw.compress.palette.compress.model.compress.CompressFactory;
 import com.tibco.bw.compress.palette.compress.model.compress.CompressPackage;
 import com.tibco.bw.compress.palette.compress.model.compress.GZDeflate;
 import com.tibco.bw.compress.palette.compress.model.compress.GZInflate;
+import com.tibco.bw.compress.palette.compress.model.compress.Tar;
+import com.tibco.bw.compress.palette.compress.model.compress.Untar;
 import com.tibco.bw.compress.palette.compress.model.compress.Unzip;
 import com.tibco.bw.compress.palette.compress.model.compress.Zip;
 
@@ -53,6 +55,20 @@ public class CompressPackageImpl extends EPackageImpl implements CompressPackage
    * @generated
    */
   private EClass gzInflateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tarEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass untarEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -162,6 +178,26 @@ public class CompressPackageImpl extends EPackageImpl implements CompressPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getTar()
+  {
+    return tarEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUntar()
+  {
+    return untarEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CompressFactory getCompressFactory()
   {
     return (CompressFactory)getEFactoryInstance();
@@ -194,6 +230,10 @@ public class CompressPackageImpl extends EPackageImpl implements CompressPackage
     gzDeflateEClass = createEClass(GZ_DEFLATE);
 
     gzInflateEClass = createEClass(GZ_INFLATE);
+
+    tarEClass = createEClass(TAR);
+
+    untarEClass = createEClass(UNTAR);
   }
 
   /**
@@ -234,6 +274,10 @@ public class CompressPackageImpl extends EPackageImpl implements CompressPackage
     initEClass(gzDeflateEClass, GZDeflate.class, "GZDeflate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(gzInflateEClass, GZInflate.class, "GZInflate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(tarEClass, Tar.class, "Tar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(untarEClass, Untar.class, "Untar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);
@@ -303,6 +347,32 @@ public class CompressPackageImpl extends EPackageImpl implements CompressPackage
        "outputelementname", "GZInflateOutput",
        "faultelementname", "GZInflateFault",
        "helpdocuuid", "df66cbe3-1430-4cb5-8475-c0446752f060"
+       });		
+    addAnnotation
+      (tarEClass, 
+       source, 
+       new String[] 
+       {
+       "activitytype", "Synchronous",
+       "schemaType", "XSD Editor",
+       "schemaFile", "C:/bw6_workspace_test_pdk/Compress/palette/design/plugins/com.tibco.bw.compress.palette.compress.design/schema/TarSchema.xsd",
+       "inputelementname", "TarInput",
+       "outputelementname", "TarOutput",
+       "faultelementname", "TarFault",
+       "helpdocuuid", "c76d7bf6-585b-4e3a-8675-a321b1bb72a1"
+       });		
+    addAnnotation
+      (untarEClass, 
+       source, 
+       new String[] 
+       {
+       "activitytype", "Synchronous",
+       "schemaType", "XSD Editor",
+       "schemaFile", "C:/bw6_workspace_test_pdk/Compress/palette/design/plugins/com.tibco.bw.compress.palette.compress.design/schema/UntarSchema.xsd",
+       "inputelementname", "UntarInput",
+       "outputelementname", "UntarOutput",
+       "faultelementname", "UntarFault",
+       "helpdocuuid", "16850792-337f-4a0f-8f48-2b94e0b2ee0e"
        });
   }
 

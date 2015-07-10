@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tns="http://www.tibco.com/Compress/Untar" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/Compress/Untar">
+  <xsd:element name="UntarInput">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="tarLocation" type="xsd:string"/>
+        <xsd:element name="tarFilename" type="xsd:string"/>
+        <xsd:element name="untarLocation" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="createDirs" type="xsd:boolean"/>
+        <xsd:element minOccurs="0" name="overwrite" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UntarOutput">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="retCode" type="xsd:integer"/>
+        <xsd:element minOccurs="0" name="retMsg" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UntarFault">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="retCode" type="xsd:integer"/>
+        <xsd:element minOccurs="0" name="retMsg" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

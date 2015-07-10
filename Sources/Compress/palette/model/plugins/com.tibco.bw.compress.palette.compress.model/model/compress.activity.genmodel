@@ -9,5 +9,7 @@
     <genClasses ecoreClass="compress.activity.ecore#//Unzip"/>
     <genClasses ecoreClass="compress.activity.ecore#//GZDeflate"/>
     <genClasses ecoreClass="compress.activity.ecore#//GZInflate"/>
+    <genClasses ecoreClass="compress.activity.ecore#//Tar"/>
+    <genClasses ecoreClass="compress.activity.ecore#//Untar"/>
   </genPackages>
 </genmodel:GenModel>
