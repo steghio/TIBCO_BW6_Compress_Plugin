@@ -43,7 +43,13 @@
          id="com.tibco.bw.compress.palette.compress.runtime"
          download-size="0"
          install-size="0"
-         version="1.2.0.FINAL"
+         version="1.2.1.FINAL"
          unpack="false"/>
+
+   <plugin
+         id="com.tibco.bw.compress.palette.libraries"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.FINAL"/>
 
 </feature>

@@ -16,3 +16,5 @@ The sample projects SampleZip and SampleUnzip under Sources can instead be impor
 If you intend to view/edit the source, after importing the Design/Module projects in your workspace, make sure to change the Target Platform to "Running Platform": Window->Preferences->Plug-in Development->Target Platform
 
 For the Runtime projects instead the default bw-runtime is correct
+
+The Apache Commons Compress library is deployed in a library bundle instead of being embedded in the plugin now

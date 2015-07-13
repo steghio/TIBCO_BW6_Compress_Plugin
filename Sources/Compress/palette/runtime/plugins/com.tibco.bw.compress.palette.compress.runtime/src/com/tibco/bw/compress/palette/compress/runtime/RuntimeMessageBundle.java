@@ -50,6 +50,7 @@ public class RuntimeMessageBundle extends MessageBundle
     public static BundleMessage ERROR_ADD_TAR_ENTRY;
     public static BundleMessage ERROR_TARRING;
     public static BundleMessage ERROR_UNTARRING;
+    public static BundleMessage ERROR_MISSING_MANDATORY_INPUT;
     //custom messages - trace
     public static BundleMessage TRACE_ZIP_ACTIVITY_START;
     public static BundleMessage TRACE_ZIPPING;

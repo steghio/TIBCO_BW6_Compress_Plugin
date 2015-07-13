@@ -1,3 +1,7 @@
+v1.2.1.FINAL
+
+- use library bundle v1.0.0.FINAL instead of embedding the jar for the runtime component
+
 v1.2.0.FINAL
 
 - handle tar files and folders with tar and untar
