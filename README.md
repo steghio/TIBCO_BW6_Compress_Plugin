@@ -18,3 +18,5 @@ If you intend to view/edit the source, after importing the Design/Module project
 For the Runtime projects instead the default bw-runtime is correct
 
 The Apache Commons Compress library is deployed in a library bundle instead of being embedded in the plugin now
+
+Project is licensed under a [CreativeCommons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
